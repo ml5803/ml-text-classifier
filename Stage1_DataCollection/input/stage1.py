@@ -30,7 +30,7 @@ python_tweets = Twython(creds['CONSUMER_KEY'], creds['CONSUMER_SECRET'])
 # print(df.head(5))
 
 categories = []
-with open('sample_input_stage1.csv', encoding = "utf8", errors = "ignore") as csv_file_read:
+with open('stage1_input.csv', encoding = "utf8", errors = "ignore") as csv_file_read:
 	queries = []
 	csv_reader = csv.reader(csv_file_read, delimiter=',')
 	next(csv_reader)
@@ -41,7 +41,7 @@ with open('sample_input_stage1.csv', encoding = "utf8", errors = "ignore") as cs
 		for c in category:
 			if c not in categories:
 				categories.append(c)
-		queries.append(({'screen_name': username}, category))
+		queries.append(({'screen_name': username, 'count': 200}, category))
 
 	outputs = []
 	for query in queries:
@@ -49,9 +49,9 @@ with open('sample_input_stage1.csv', encoding = "utf8", errors = "ignore") as cs
 			tweet = result['text']
 			tweetid = result['id']
 			outputs.append([query[0]['screen_name'], tweetid, tweet, query[1]])
-
+	print(len(outputs))
 	# this would overwrite the previous file, be careful
-	with open('sample_output_stage1.csv', "w", encoding = "utf8", errors = "ignore") as csv_file_write:
+	with open('../output/output.csv', "w", encoding = "utf8", errors = "ignore") as csv_file_write:
 		csv_writer = csv.writer(csv_file_write, delimiter=',', quoting=csv.QUOTE_MINIMAL)
 
 		# csv_writer.writerow(['Handle', 'TweetID', 'Tweet', 'Category'])
