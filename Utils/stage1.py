@@ -30,7 +30,7 @@ python_tweets = Twython(creds['CONSUMER_KEY'], creds['CONSUMER_SECRET'])
 # print(df.head(5))
 
 categories = []
-with open('stage1_input.csv', encoding = "utf8", errors = "ignore") as csv_file_read:
+with open('../DataCollection/input/stage1_input.csv', encoding = "utf8", errors = "ignore") as csv_file_read:
 	queries = []
 	csv_reader = csv.reader(csv_file_read, delimiter=',')
 	next(csv_reader)
@@ -51,7 +51,7 @@ with open('stage1_input.csv', encoding = "utf8", errors = "ignore") as csv_file_
 			outputs.append([query[0]['screen_name'], tweetid, tweet, query[1]])
 	print(len(outputs))
 	# this would overwrite the previous file, be careful
-	with open('../output/output.csv', "w", encoding = "utf8", errors = "ignore") as csv_file_write:
+        with open('../DataCollection/output/output.csv', "w", encoding = "utf8", errors = "ignore") as csv_file_write:    
 		csv_writer = csv.writer(csv_file_write, delimiter=',', quoting=csv.QUOTE_MINIMAL)
 
 		# csv_writer.writerow(['Handle', 'TweetID', 'Tweet', 'Category'])
