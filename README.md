@@ -20,4 +20,4 @@ Models completed so far: Logistic Regression, SVM, Neural Network using TFID
 - Utils: Miscellaneous
   - script to crawl data from twitter api
   - scripts to do data cleaning: which were not used
-  - scripts to gather sentiment analysis from AWS: (potentially)could be used to increased model accuracy
+  - scripts to gather sentiment analysis from AWS: (potentially) could be used to increased model accuracy as an additional feature
